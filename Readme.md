@@ -51,6 +51,8 @@ The app defines following CRUD APIs.
     
     PUT /api/stories/{storyId}
     
+    DELETE /api/stories/{storyId}
+    
  
 
 ## About Endpoints supporting both json and xml 
