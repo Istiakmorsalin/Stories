@@ -49,6 +49,15 @@ The app defines following CRUD APIs.
     
     GET /api/stories/{storyId}
     
+    PUT /api/stories/{storyId}
+    
  
+
+## About Endpoints supporting both json and xml 
+Here I implemented Content Negotiation.
+ 
+**In order to achieve it we have to send another header namely "Accept" header as ‘application/xml’
+If a consumer sends a request with Accept header as ‘application/json’, we will provide the JSON representation of the resource.**
+
 
 Test them using postman or any other rest client.
