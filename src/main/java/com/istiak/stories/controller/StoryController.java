@@ -4,6 +4,7 @@ import com.istiak.stories.exception.ResourceNotFoundException;
 import com.istiak.stories.model.Story;
 import com.istiak.stories.repository.StoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -46,6 +47,16 @@ public class StoryController {
 
         Story updatedStory = storyRepository.save(story);
         return updatedStory;
+    }
+
+    @DeleteMapping("/stories/{id}")
+    public ResponseEntity<?> deleteStory(@PathVariable(value = "id") Long storyId) {
+        Story story = storyRepository.findById(storyId)
+                .orElseThrow(() -> new ResourceNotFoundException("Story", "id", storyId));
+
+        storyRepository.delete(story);
+
+        return ResponseEntity.ok().build();
     }
 
 
