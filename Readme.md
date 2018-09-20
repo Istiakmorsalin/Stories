@@ -53,6 +53,10 @@ The app defines following CRUD APIs.
     
     DELETE /api/stories/{storyId}
     
+    POST /users/sign-up 
+    
+    POST /login
+    
  
 
 ## About Endpoints supporting both json and xml 
@@ -62,4 +66,9 @@ Here I implemented Content Negotiation.
 If a consumer sends a request with Accept header as ‘application/json’, we will provide the JSON representation of the resource.**
 
 
+## Authorization test
+
+**Request Create stories in postman it will show 403 access forbidden. But register a  user by hitting /users/sign-up and do login by hitting with /login with the same username, password will provide a bearer accesstoken. 
+ Add the token as Authorization token in request header and see creating stories has been authorized by login.voila!**
+ 
 Test them using postman or any other rest client.
