@@ -56,7 +56,7 @@ The app defines following CRUD APIs.
 ## About Endpoints supporting both json and xml 
 Here I implemented Content Negotiation.
  
-**In order to achieve it we have to send another header namely "Accept" header as ‘application/xml’
+**In order to achieve it we have to send another header namely "Accept" header as ‘application/xml’ for xml response.
 If a consumer sends a request with Accept header as ‘application/json’, we will provide the JSON representation of the resource.**
 
 
