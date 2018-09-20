@@ -33,5 +33,20 @@ public class StoryController {
         return (List<Story>) storyRepository.findAll();
     }
 
+    @PutMapping("/stories/{id}")
+    public Story updateNote(@PathVariable(value = "id") Long storyId,
+                           @Valid @RequestBody Story storyDetails) {
+
+        Story story = storyRepository.findById(storyId)
+                .orElseThrow(() -> new ResourceNotFoundException("Story", "id", storyId));
+
+        story.setTitle(storyDetails.getTitle());
+        story.setBody(storyDetails.getBody());
+        story.setPublishedAt(storyDetails.getPublishedAt());
+
+        Story updatedStory = storyRepository.save(story);
+        return updatedStory;
+    }
+
 
 }
