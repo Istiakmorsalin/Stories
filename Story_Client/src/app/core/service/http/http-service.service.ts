@@ -11,9 +11,16 @@ export class HttpRequestService {
 
   createAuthorizationHeader(headers: Headers) {
 
-    headers.append('Content-Type', 'application/json');
+    headers.append('Content-Type', 'application/json')
     headers.append('Accept-Language', environment.lang);
-    
+
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      console.log(accessToken)
+      headers.append('Authorization', 'Bearer ' + accessToken);
+    }
+
+    console.log(headers)
   }
 
   get(url, params: any = '') {
