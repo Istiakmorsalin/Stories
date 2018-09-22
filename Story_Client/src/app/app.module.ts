@@ -15,13 +15,16 @@ import { RegistrationComponent } from './registration/registration.component';
 import { RegistrationService } from './registration/registration.service';
 import {LoginComponent}   from './login/login.component';
 import { LoginService } from './login/login.service';
+import {CreateComponent}   from './story/create/create.component';
+import {StoryService} from './story/story.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    CreateComponent
   ],
   imports: [
     RouterModule,
@@ -31,7 +34,7 @@ import { LoginService } from './login/login.service';
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [HttpRequestService,RegistrationService, LoginService],
+  providers: [HttpRequestService,RegistrationService, LoginService,StoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
