@@ -20,7 +20,8 @@ public class StoryController {
 
     @PostMapping("/stories")
     public Story createNote(@Valid @RequestBody Story story) {
-        return storyRepository.save(story);
+        storyRepository.save(story);
+        return story;
     }
 
     @GetMapping("/stories/{id}")

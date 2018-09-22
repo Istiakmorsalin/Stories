@@ -65,7 +65,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         PrintWriter out = res.getWriter();
         String jsonString = new JSONObject()
-                .put("accessToken", TOKEN_PREFIX + token).toString();
+                .put("accessToken", token).toString();
 
         System.out.println(jsonString);
         out.print(jsonString);
