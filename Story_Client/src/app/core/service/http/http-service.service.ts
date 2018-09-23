@@ -49,21 +49,12 @@ export class HttpRequestService {
     });
   }
 
-  delete(url, data?) {
+  delete(url) {
     const headers = new Headers();
     this.createAuthorizationHeader(headers);
-
-    if (data) {
-      return this.http.delete(url, new RequestOptions({
-        headers: headers,
-        body: data
-      }));
-    } else {
-      return this.http.delete(url, {
-        headers: headers
-      });
-    }
-
+    return this.http.delete(url, {
+      headers: headers
+    });
   }
 
   patch(url, data) {
