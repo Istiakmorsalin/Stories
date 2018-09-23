@@ -67,18 +67,14 @@ export class LoginComponent implements OnInit {
    this.service
      .doLogin(formData)
      .subscribe((response) => {
-       debugger;
-       console.log(response)
          this.submitted = !this.submitted;
-         console.log(response)
-         debugger
          localStorage.setItem("accessToken", response.accessToken);
          let alert = new Alert();
          alert.type = 'success';
          alert.title = 'Success';
          alert.message = 'Successfully registered partner';
          this.alert.setAlert(alert);
-          this.router.navigate([`/create-story`]);     
+         this.router.navigate([`/story-list`]);     
      }, (error) => {
        this.submitted = !this.submitted;
        let alert = new Alert();

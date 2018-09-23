@@ -22,6 +22,10 @@ export class EditComponent implements OnInit {
   private submitted: boolean = false;
   private storyId;
   private story;
+
+  private titleFormatCtrl: FormControl;
+  private bodyFormCtrl: FormControl;
+
   
    // Form Related Variables
   private form: FormGroup;
@@ -43,15 +47,19 @@ export class EditComponent implements OnInit {
     this.route.params
     .subscribe((params) => this.storyId = params['id']);
     console.log(this.storyId)
-    this.fetchStoryById(this.storyId)
-    this.initForm(); 
+    this.fetchStoryById(this.storyId) 
+  }
+
+  private initFormCtrl(story) {
+    this.titleFormatCtrl = new FormControl(story.title, [Validators.required]);
+    this.bodyFormCtrl = new FormControl(story.body, [Validators.required]);
   }
 
 
    private initForm(): void {
     this.form = this.formBuilder.group({
-      title: this.title,
-      body: this.body,
+      title: this.titleFormatCtrl,
+      body: this.bodyFormCtrl,
       publishedAt: this.publishedAt
     }, {
         validator: (control: FormControl) => {
@@ -68,9 +76,10 @@ export class EditComponent implements OnInit {
   private fetchStoryById(id) {
     this.service
       .getStoryById(id).subscribe((response) => {
-        console.log(response)
         this.story = response
         console.log(this.story)
+        this.initFormCtrl(this.story)
+        this.initForm();
       });
   }
 
@@ -81,9 +90,8 @@ export class EditComponent implements OnInit {
     console.log(formData);
     
     this.service
-      .createStory(formData)
+      .updateStory(this.storyId,formData)
       .subscribe((response) => {
-        debugger;
         console.log(response)
        this.router.navigate([`/story-list`]); 
       }, (error) => {
