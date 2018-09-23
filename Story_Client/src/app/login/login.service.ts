@@ -19,7 +19,7 @@ export class LoginService {
     public doLogin(userData): Observable<any> {
 
         return this.http
-          .post(`${environment.api.dev}/login`, userData)
+          .post(`${environment.api.dev}/login`, userData,false)
           .map((response: any) => response.json())
           .catch(this.handleAuthError);
       }

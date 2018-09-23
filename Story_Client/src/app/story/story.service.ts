@@ -19,19 +19,19 @@ export class StoryService {
   public createStory(storyData): Observable<any> {
 
     return this.http
-      .post(`${environment.api.dev}/api/stories`, storyData)
+      .post(`${environment.api.dev}/api/stories`, storyData, true)
       .map((response: any) => response.json())
       .catch(this.handleAuthError);
   } 
 
   public getStories(): Observable<any> {
     let url = `${environment.api.dev}/api/stories`;
-    return this.http.get(url).map(response => response.json());
+    return this.http.get(url,'', false).map(response => response.json());
   }
 
   public getStoryById(storyId: any): Observable<any> {
     let url = `${environment.api.dev}/api/stories/${storyId}`;
-    return this.http.get(url).map(response => response.json());
+    return this.http.get(url, '', true ).map(response => response.json());
   }
 
   public deleteStory(id) {

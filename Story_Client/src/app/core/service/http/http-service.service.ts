@@ -23,19 +23,22 @@ export class HttpRequestService {
     console.log(headers)
   }
 
-  get(url, params: any = '') {
+  get(url, params: any = '', status) {
     const headers = new Headers();
-    this.createAuthorizationHeader(headers);
+    if (status == true) {
+      this.createAuthorizationHeader(headers);
+    }
     return this.http.get(url, {
       search: params,
       headers: headers
     });
   }
 
-  post(url, data) {
+  post(url, data, status) {
     const headers = new Headers();
-    this.createAuthorizationHeader(headers);
-
+    if (status == true) {
+      this.createAuthorizationHeader(headers);
+    }
     return this.http.post(url, data, {
       headers: headers
     });

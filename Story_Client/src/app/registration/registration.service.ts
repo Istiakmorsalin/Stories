@@ -19,7 +19,7 @@ export class RegistrationService {
   public doRegistration(userData): Observable<any> {
 
     return this.http
-      .post(`${environment.api.dev}/users/sign-up`, userData)
+      .post(`${environment.api.dev}/users/sign-up`, userData,false)
       .map((response: any) => response.json())
       .catch(this.handleAuthError);
   }
