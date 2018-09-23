@@ -70,7 +70,7 @@ export class CreateComponent implements OnInit {
       .subscribe((response) => {
         debugger;
         console.log(response)
-       this.router.navigate([`/login`]); 
+       this.router.navigate([`/story-list`]); 
       }, (error) => {
         this.submitted = !this.submitted;
     
