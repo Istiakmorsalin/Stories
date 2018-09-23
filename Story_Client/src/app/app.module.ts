@@ -17,14 +17,17 @@ import {LoginComponent}   from './login/login.component';
 import { LoginService } from './login/login.service';
 import {CreateComponent}   from './story/create/create.component';
 import {StoryService} from './story/story.service';
-
+import {ListComponent}   from './story/list/list.component';
+import {EditComponent}   from './story/edit/edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
     LoginComponent,
-    CreateComponent
+    CreateComponent,
+    ListComponent,
+    EditComponent
   ],
   imports: [
     RouterModule,
