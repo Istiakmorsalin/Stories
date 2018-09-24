@@ -25,7 +25,6 @@ export class EditComponent implements OnInit {
 
   private titleFormatCtrl: FormControl;
   private bodyFormCtrl: FormControl;
-
   
    // Form Related Variables
   private form: FormGroup;
@@ -46,7 +45,6 @@ export class EditComponent implements OnInit {
   ngOnInit() {
     this.route.params
     .subscribe((params) => this.storyId = params['id']);
-    console.log(this.storyId)
     this.fetchStoryById(this.storyId) 
   }
 
@@ -77,7 +75,6 @@ export class EditComponent implements OnInit {
     this.service
       .getStoryById(id).subscribe((response) => {
         this.story = response
-        console.log(this.story)
         this.initFormCtrl(this.story)
         this.initForm();
       });
@@ -87,12 +84,10 @@ export class EditComponent implements OnInit {
 
     this.submitted = !this.submitted;
     let formData: any = Object.assign({}, this.form.value);
-    console.log(formData);
     
     this.service
       .updateStory(this.storyId,formData)
       .subscribe((response) => {
-        console.log(response)
        this.router.navigate([`/story-list`]); 
       }, (error) => {
         this.submitted = !this.submitted;

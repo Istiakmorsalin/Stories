@@ -34,8 +34,16 @@ export class ListComponent implements OnInit {
     this.service
       .getStories(
       ).subscribe((response) => {
-        console.log(response)
         this.stories = response
+        this.stories.forEach(element => {
+          //sconsole.log(element)
+          var date = new Date(element.publishedAt);
+          var str = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
+          element["date"] = str
+          
+        });
+        
+       console.log(this.stories) 
       });
   }
 

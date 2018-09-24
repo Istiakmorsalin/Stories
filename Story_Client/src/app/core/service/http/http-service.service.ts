@@ -16,11 +16,8 @@ export class HttpRequestService {
 
     const accessToken = localStorage.getItem("accessToken");
     if (accessToken) {
-      console.log(accessToken)
       headers.append('Authorization', 'Bearer ' + accessToken);
     }
-
-    console.log(headers)
   }
 
   get(url, params: any = '', status) {

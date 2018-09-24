@@ -63,13 +63,11 @@ export class CreateComponent implements OnInit {
 
     this.submitted = !this.submitted;
     let formData: any = Object.assign({}, this.form.value);
-    console.log(formData);
+    
     
     this.service
       .createStory(formData)
       .subscribe((response) => {
-        debugger;
-        console.log(response)
        this.router.navigate([`/story-list`]); 
       }, (error) => {
         this.submitted = !this.submitted;
