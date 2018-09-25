@@ -9,6 +9,10 @@
 
 3. Mysql - 5.x.x
 
+4. Node 
+
+5. TypeScript 
+
 ## Steps to Setup
 
 **1. Clone the application**
@@ -28,6 +32,9 @@ create database testy
 
 + change `spring.datasource.username` and `spring.datasource.password` as per your mysql installation
 
++ Need to extend the Type of Story Table's Body type. By Default the database will be created as 
+VARCHAR(255) but its not sufficient for requirement. Need to set maximum character limit.   
+
 **4. Build and run the app using maven**
 
 
@@ -36,6 +43,9 @@ Run the app without packaging it using -
 ```bash
 mvn spring-boot:run
 ```
+
+Or in any IDE import the project as Maven project and Download its dependencies. 
+After that you can run the project as a spring boot application. 
 
 The app will start running at <http://localhost:8080>.
 
@@ -48,6 +58,8 @@ The app defines following CRUD APIs.
     POST /api/stories
     
     GET /api/stories/{storyId}
+
+    GET api/stories/page/{page}/limit/{limit}
     
     PUT /api/stories/{storyId}
     
@@ -71,25 +83,27 @@ If a consumer sends a request with Accept header as ‘application/json’, we w
 **Request Create stories in postman it will show 403 access forbidden. But register a  user by hitting /users/sign-up and do login by hitting with /login with the same username, password will provide a bearer accesstoken. 
  Add the token as Authorization token in request header and see creating stories has been authorized by login.voila!**
  
-Test them using postman or any other rest client.
-
+Test them using postman, there is a postman json collection or any other rest client would do fine.
 
 # StoryDB(Web App)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
+## Downloading dependencies
+
+Change directory to Story_Client and Run `npm install` to download dependencies
+
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
+Run `npm start` or `ng serve` for a dev server. Navigate to `http://localhost:4200/registration`. 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Access Registration 
+## Access Login
 
 `Add localhost server ip address in environment.ts file.`
 
-To access registration url hit in browser.
-`http://localhost:4200/registration`
+To access login url hit in browser.
+`http://localhost:4200/login`
 
