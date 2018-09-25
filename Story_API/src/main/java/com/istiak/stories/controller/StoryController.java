@@ -4,9 +4,13 @@ import com.istiak.stories.exception.ResourceNotFoundException;
 import com.istiak.stories.model.Story;
 import com.istiak.stories.repository.StoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -58,6 +62,16 @@ public class StoryController {
         storyRepository.delete(story);
 
         return ResponseEntity.ok().build();
+    }
+
+    @RequestMapping("/stories/page/{pageno}/limit/{limit}")
+    @ResponseBody
+    public List<Story> getAllPosts(@PathVariable("pageno") int pageno,
+                                  HttpServletRequest req, HttpServletResponse res, @PathVariable("limit") int limit)
+            throws ServletException {
+
+        List<Story> obj = storyRepository.getAllStoriesSorted(new PageRequest(pageno,limit));
+        return obj;
     }
 
 
